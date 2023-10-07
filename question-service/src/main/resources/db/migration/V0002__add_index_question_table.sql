@@ -1,0 +1,1 @@
+create index idx_question_question_id on question(question_id);

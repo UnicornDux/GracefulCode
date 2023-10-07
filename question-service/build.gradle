@@ -1,0 +1,69 @@
+
+
+plugins {
+    id "java"
+    id "checkstyle"
+    id "org.springframework.boot" version "2.6.4"
+}
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 将springboot依赖版本交给对应的 Bom 文件管理
+
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("org.flywaydb:flyway-core")
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    // 使用 bom 包的方式来管理对应的依赖的版本
+    testImplementation(platform("org.junit:junit-bom:5.8.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    // 只在运行时生效
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+    // 引入容器环境进行测试
+    testImplementation("org.testcontainers:testcontainers:1.16.3")
+    testImplementation("org.testcontainers:mysql:1.16.3")
+}
+
+//------------------------------------------------------------------------------
+// 使用java插件的工具链来限定编译运行代码的JDK版本,可以避免在不同版本造成的程序运行异常
+//------------------------------------------------------------------------------
+java {
+    toolchain{
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+// ------------------------------------------------------------------------------kkl
+// checkstyle 插件配置
+// ------------------------------------------------------------------------------
+checkstyle {
+   maxWarnings = 0
+   toolVersion = "10.0"
+}
+
+
+tasks{
+    // ------------------------------------------------------------
+    // 创建一个任务,用来执行指定的命令,
+    // ------------------------------------------------------------
+    test{
+		// 构建的时候不执行测试代码，（gradle  build -x test）
+    	enabled(false)
+        useJUnitPlatform()
+		// enabled(true)
+		// include('com/zhihu/**')  // 只测试某些目录下的
+		// exclude('com/zhihu/dao/**') // 排除某些包下的不执行
+    }
+}
