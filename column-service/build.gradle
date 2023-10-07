@@ -1,0 +1,31 @@
+plugins  {
+    id "org.springframework.boot" version "2.7.6"
+}
+
+group = 'com.zheye.column'
+version = '1.0.0-SNAPSHOT'
+
+dependencies {
+
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-jdbc')
+    // 添加 mybatis-plus 集成
+
+    runtimeOnly('mysql:mysql-connector-java')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+tasks {
+
+    // 通过任务的形式来构建一个指定的指令，方便我们在构建代码的时候不会执行测试代码，
+    // 对应的 gradle 指令是( gradle build -x test )
+    test {
+        enabled(false)
+        useJUnitPlatform()
+    }
+}

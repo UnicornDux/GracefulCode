@@ -1,0 +1,34 @@
+plugins {
+    id "java"
+    id "checkstyle"
+    id "org.springframework.boot" version "2.7.6"
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+}
+
+subprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+        mavenCentral()
+    }
+}
+
+// ------------------------------------------------------------------------------
+// checkstyle 插件配置
+// ------------------------------------------------------------------------------
+checkstyle {
+    maxWarnings = 0
+    toolVersion = "10.0"
+}
+
+//------------------------------------------------------------------------------
+// 使用java插件的工具链来限定编译运行代码的JDK版本,可以避免在不同版本造成的程序运行异常
+//------------------------------------------------------------------------------
+java {
+    toolchain{
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}

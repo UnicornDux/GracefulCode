@@ -1,12 +1,12 @@
-package com.zheye.question;
-
+package com.zheye.column;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class QuestionServiceBootstrap {
+public class ColumnApplication {
     public static void main(String[] args) {
-        SpringApplication.run(QuestionServiceBootstrap.class, args);
+        SpringApplication.run(ColumnApplication.class, args);
     }
 }
