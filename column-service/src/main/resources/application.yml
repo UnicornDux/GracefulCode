@@ -1,0 +1,18 @@
+server:
+  port: 9901
+
+spring:
+  profiles:
+    active: local
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mappers/**/*.xml
+  type-aliases-package: com.zheye.column.domain.model
+  configuration:
+    map-underscore-to-camel-case: false
+    jdbc-type-for-null: Null
+
+logging:
+  level:
+    com.zheye.column: DEBUG

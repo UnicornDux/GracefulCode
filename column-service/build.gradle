@@ -1,20 +1,24 @@
 plugins  {
-    id "org.springframework.boot" version "2.7.6"
+    id "org.springframework.boot" version "3.1.4"
 }
 
 group = 'com.zheye.column'
 version = '1.0.0-SNAPSHOT'
 
 dependencies {
+    compileOnly('org.projectlombok:lombok:1.18.30')
 
     implementation('org.springframework.boot:spring-boot-starter')
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-actuator')
     implementation('org.springframework.boot:spring-boot-starter-jdbc')
     // 添加 mybatis-plus 集成
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'
 
-    runtimeOnly('mysql:mysql-connector-java')
+    // 添加 oauth 集成
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 
+    runtimeOnly('com.mysql:mysql-connector-j')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'

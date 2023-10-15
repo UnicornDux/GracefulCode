@@ -7,3 +7,7 @@ spring:
   jpa:
     # jpa 默认会为每一个进入的请求开启事务，直到请求结束，这样会覆盖自己定义的事务，需要关闭这个配置
     open-in-view: false
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect

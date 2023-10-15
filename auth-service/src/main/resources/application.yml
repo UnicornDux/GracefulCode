@@ -1,0 +1,7 @@
+server:
+  port: 9900
+
+http-client:
+  connectTimeout: 1000
+  requestTimeout: 60000
+  readTimeout: 10000

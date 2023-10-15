@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zheye.column.domain.mapper.UserMapper">
+
+    <select id="selectUserDetailByEmail" resultType="com.zheye.column.domain.model.ZheYeUser">
+
+        select
+            `_id` as _id,
+            `email`,
+            `nickname`,
+            `password`,
+            `description`,
+            `avatar`,
+            `column`,
+            `created_at`
+        from `user` where email = #{email}
+    </select>
+</mapper>

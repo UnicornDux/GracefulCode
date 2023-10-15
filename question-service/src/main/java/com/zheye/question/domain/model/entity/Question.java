@@ -1,14 +1,14 @@
 package com.zheye.question.domain.model.entity;
 
 import com.zheye.question.domain.model.vo.QuestionUpdateRecord;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 public class Question {

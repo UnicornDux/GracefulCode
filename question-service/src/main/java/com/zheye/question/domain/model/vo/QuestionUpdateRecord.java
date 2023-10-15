@@ -1,11 +1,12 @@
 package com.zheye.question.domain.model.vo;
 
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import org.springframework.data.annotation.PersistenceConstructor;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
